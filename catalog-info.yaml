@@ -1,0 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: vm-on-aws5
+  description: The virtual machine for the staging
+  links:
+  - title: Pulumi Console
+    url: https://app.pulumi.com/backstage/vm-on-aws5/staging
+spec:
+  type: virtual-machine
+  owner: "group:default/guests"
+  lifecycle: experimental
+  system: Infrastructure
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vm-on-aws5
+  description: "aws"
+  annotations:
+    github.com/project-slug: damodarkumar/vm-on-aws8
+    pulumi.com/project-slug: backstage/vm-on-aws5/staging
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "group:default/guests"
+  system: Infrastructure
+  dependsOn:
+  - resource:default/vm-on-aws5
